@@ -1,6 +1,6 @@
 <?php
 //Задание #1
-$name = 'Svetlana';
+$name = 'Светлана';
 $age = 30;
 echo 'Меня зовут: ' . $name . '<br>';
 echo 'Мне ' . $age . ' лет<br>';
@@ -14,7 +14,7 @@ $paint = ALL - MARKER - PENCIL;
 echo '<br>' . $paint . ' рисунков выполненно красками.<br>';
 
 //Задание #3
-$age2 = random_int(1, 120);
+$age2 = rand(1, 120);
 if ($age2 >= 18 && $age2 <= 65) {
     echo 'Возраст: ' . $age2 . '- Вам еще работать и работать<br>';
 } elseif ($age2 > 65 && $age2 < 99) {
@@ -26,7 +26,7 @@ if ($age2 >= 18 && $age2 <= 65) {
 }
 
 //Задание #4
-$day = random_int(1, 9);
+$day = rand(1, 9);
 switch ($day) {
     case 1:
     case 2:
