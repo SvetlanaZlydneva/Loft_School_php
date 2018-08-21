@@ -48,9 +48,9 @@ $toyota = ['model' => 'Corolla', 'sped' => 185, 'doors' => 4, 'year' => '2014'];
 $opel = ['model' => 'Omega', 'sped' => 160, 'doors' => 4, 'year' => '2013'];
 $auto = ['bmw' => $bmw, 'toyota' => $toyota, 'opel' => $opel];
 foreach ($auto as $key => $value) {
-    $array_value_print .= '<br>CAR ' . $key . '<br>';
+    $cars .= '<br>CAR ' . $key . '<br>';
     foreach ($auto[$key] as $k => $v) {
-        $array_value_print .= ' ' . $v . ' ';
+        $cars .= ' ' . $v . ' ';
     }
 }
 echo $array_value_print;
