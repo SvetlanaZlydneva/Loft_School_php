@@ -2,14 +2,12 @@
 //Задание #1
 function task1($arr, $combined_str = false)
 {
-    $paragraph_str = '';
     if ($combined_str) {
         return implode(" ", $arr);
     } else {
         foreach ($arr as $value) {
-            $paragraph_str .= '<p>' . $value . '</p>';
+            echo '<p>' . $value . '</p>';
         }
-        return $paragraph_str;
     }
 }
 

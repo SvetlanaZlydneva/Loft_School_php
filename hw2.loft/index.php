@@ -13,7 +13,7 @@ $string_2_task5 = 'Две бутылки лимонада';
 $file_task6 = 'files/test.txt';
 //Задание #1
 echo '<h3>Задание #1</h3>';
-echo task1($array_string_task1);
+task1($array_string_task1);
 echo task1($array_string_task1, true);
 //Задание #2
 echo '<h3>Задание #2</h3>';
