@@ -29,7 +29,6 @@ function task2()
     } else {
         echo "<p>Error: Аргументы не переданы!!!</p>";
     }
-
 }
 
 function task2_numeric($arr)
@@ -112,7 +111,6 @@ function task2_calc($arr)
     } else {
         return '<p>' . $result_text . 'Error: умножение или деление на 0!!!</p>';
     }
-
 }
 
 //Задание #3
@@ -134,7 +132,6 @@ function task3($arg_1, $arg_2)
     } else {
         echo "<p>Error: Аргумент(-ты) NOT INT!!!</p>";
     }
-
 }
 
 //Задание #4
@@ -156,7 +153,6 @@ function task5($str_replace, $action_replace)
     if ($action_replace == 2) {
         echo '<br>' . str_replace('Две', 'Три', $str_replace);
     }
-
 }
 
 //Задание #6
