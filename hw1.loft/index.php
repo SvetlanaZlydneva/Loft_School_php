@@ -10,19 +10,19 @@ echo '"!|\/\'"\<br>';
 const ALL = 80;
 const MARKER = 23;
 const PENCIL = 40;
-$paint = ALL - MARKER - PENCIL;
-echo '<br>' . $paint . ' рисунков выполненно красками.<br>';
+$paints = ALL - MARKER - PENCIL;
+echo '<br>' . $paints . ' рисунков выполненно красками.<br>';
 
 //Задание #3
-$age2 = rand(1, 120);
-if ($age2 >= 18 && $age2 <= 65) {
-    echo 'Возраст: ' . $age2 . '- Вам еще работать и работать<br>';
-} elseif ($age2 > 65 && $age2 < 99) {
-    echo 'Возраст: ' . $age2 . '- Вам пора на пенсию<br>';
-} elseif ($age2 >= 1 && $age2 <= 17) {
-    echo 'Возраст: ' . $age2 . '- Вам ещё рано работать<br>';
+$working_age = rand(1, 120);
+if ($working_age >= 18 && $working_age <= 65) {
+    echo 'Возраст: ' . $working_age . '- Вам еще работать и работать<br>';
+} elseif ($working_age > 65 && $working_age < 99) {
+    echo 'Возраст: ' . $working_age . '- Вам пора на пенсию<br>';
+} elseif ($working_age >= 1 && $working_age <= 17) {
+    echo 'Возраст: ' . $working_age . '- Вам ещё рано работать<br>';
 } else {
-    echo 'Возраст: ' . $age2 . '- Неизвестный возраст<br>';
+    echo 'Возраст: ' . $working_age . '- Неизвестный возраст<br>';
 }
 
 //Задание #4
@@ -47,13 +47,13 @@ $bmw = ['model' => 'X5', 'sped' => 120, 'doors' => 5, 'year' => '2015'];
 $toyota = ['model' => 'Corolla', 'sped' => 185, 'doors' => 4, 'year' => '2014'];
 $opel = ['model' => 'Omega', 'sped' => 160, 'doors' => 4, 'year' => '2013'];
 $auto = ['bmw' => $bmw, 'toyota' => $toyota, 'opel' => $opel];
-foreach ($auto as $key => $zn) {
-    $look .= '<br>CAR ' . $key . '<br>';
-    foreach ($auto[$key] as $k => $z) {
-        $look .= ' ' . $z . ' ';
+foreach ($auto as $key => $value) {
+    $array_value_print .= '<br>CAR ' . $key . '<br>';
+    foreach ($auto[$key] as $k => $v) {
+        $array_value_print .= ' ' . $v . ' ';
     }
 }
-echo $look;
+echo $array_value_print;
 
 //Задание #6
 echo '<br><br><table border="1" style="text-align: center"><tr>';
