@@ -12,14 +12,15 @@ function task1($strings, $combined_str = false)
 }
 
 //Задание #2
-function task2()
+function task2(...$args)
 {
-    $action = ['-', '+', '/', '*'];
-    $get_args = func_get_args();
-    if (isset($get_args) && !empty($get_args)) {
-        if (in_array($get_args[0], $action)) {
-            if (task2_numeric($get_args) == 0) {
-                echo task2_calc($get_args);
+    $actions = ['-', '+', '/', '*'];
+    $action = array_shift($args);
+    $numbers = $args;
+    if (!empty($action) && !empty($numbers)) {
+        if (in_array($action, $actions)) {
+            if (task2_numeric($numbers) == 0) {
+                echo task2_calc($action, $numbers);
             } else {
                 echo "<p>Error: Аргумент(-ты) не являются целыми или вещественными цислами!!!</p>";
             }
@@ -31,86 +32,62 @@ function task2()
     }
 }
 
-function task2_numeric($arr)
+function task2_numeric($numbers)
 {
     $not_numeric = 0;
-    foreach ($arr as $key => $zn) {
-        if ($key == 0) {
-            continue;
-        } else {
-            if (!is_numeric($arr[$key])) {
-                $not_numeric++;
-            }
+    foreach ($numbers as $number) {
+        if (!is_numeric($number)) {
+            $not_numeric++;
         }
     }
     return $not_numeric;
 }
 
-function task2_calc($arr)
+function task2_calc($action, $numbers)
 {
-    $action = $arr[0];
-    $result = $arr[1];
-    $result_text = $result . ' ' . $action . ' ';
+    $implodedExpression = implode(" {$action} ", $numbers);
     $error_null = false;
-    unset($arr[0], $arr[1]);
-    foreach ($arr as $value) {
-        switch ($action) {
-            case '+':
-                $result += $value;
-                break;
-            case '-':
-                $result -= $value;
-                break;
-            case '*':
-                $result *= $value;
-                break;
-            case '/':
-                if ($result == 0 || $value == 0) {
-                    $error_null = true;
-                } else {
-                    $result /= $value;
-                }
-                break;
+    $result = 0;
+    if ($action == '/') {
+        foreach ($numbers as $number) {
+            if ($number == 0) {
+                $error_null = true;
+            }
         }
-        if ($value != end($arr)) {
-            $result_text .= $value . $action;
-        } else {
-            $result_text .= $value . ' = ';
-        }
-    }
-
-    if (is_float($result)) {
-        $result = round($result, 2);
     }
     if (!$error_null) {
-        return '<p>' . $result_text . $result . '</p>';
+        eval("\$result = $implodedExpression;");
+        if (is_float($result)) {
+            $result = round($result, 2);
+        }
+        return "<p>{$implodedExpression} = {$result}</p>";
     } else {
-        return '<p>' . $result_text . 'Error: Нельзя / на 0!!!</p>';
+        return "<p>{$implodedExpression} = Нельзя / на 0!!!</p>";
     }
 }
 
 //Задание #3
-function task3($first_int, $second_int)
+function task3($start, $end)
 {
     $res = '';
-    if (is_int($first_int)) {
-        if (is_int($second_int)) {
-            $res .= '<table border="1" style="text-align: center"><tr>';
-            for ($i = 1; $i <= $first_int; $i++) {
-                for ($j = 1; $j <= $second_int; $j++) {
-                    $res .= '<td>' . $j * $i . '</td>';
-                }
-                if ($i != $first_int) {
-                    $res .= '</tr><tr>';
-                }
+    if (is_int($start) && is_int($end)) {
+        $res .= '<table border="1" style="text-align: center"><tr>';
+        for ($row = 1; $row <= $start; $row++) {
+            for ($col = 1; $col <= $end; $col++) {
+                $res .= '<td>' . $col * $row . '</td>';
             }
-            $res .= '</tr></table>';
-            echo $res;
-        } else {
-            echo "<p>Error: Second argument {$second_int} is not INT type!!!</p>";
+            if ($row != $start) {
+                $res .= '</tr><tr>';
+            }
         }
+        $res .= '</tr></table>';
+        echo $res;
     } else {
-        echo "<p>Error: First argument {$first_int} is not INT type!!!</p>";
+        if (!is_int($start)) {
+            echo "<p>Error: First argument {$start} is not INT type!!!</p>";
+        } else {
+            echo "<p>Error: Second argument {$end} is not INT type!!!</p>";
+        }
     }
 }
 
