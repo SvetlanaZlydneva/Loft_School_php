@@ -1,5 +1,5 @@
 <?php
-require_once 'functions.php';
+require_once 'src/functions.php';
 $array_string_task1 = [
     'Функция - поименованный фрагмент программного кода (подпрограмма),',
     ' к которому можно обратиться из другого места программы.',
@@ -29,14 +29,15 @@ task2('/', 'mas', 0, 6);
 echo '<h3>Задание #3</h3>';
 task3(5, 6);
 task3(5.5, 6);
+task3(5, 6.2);
 //Задание #4
 echo '<h3>Задание #4</h3>';
 echo task4() . ' - Текущая дата<br>';
 echo task4("24.02.2016 00:00:00") . ' - UNIX_TIME 24.02.2016 00:00:00';
 //Задание #5
 echo '<h3>Задание #5</h3>';
-task5($string_1_task5, 1);
-task5($string_2_task5, 2);
+task5_del_letter($string_1_task5);
+task5_replace_word($string_2_task5);
 //Задание #6
 echo '<h3>Задание #6</h3>';
 task6($file_task6);
