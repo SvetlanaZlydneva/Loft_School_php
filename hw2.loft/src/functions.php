@@ -45,7 +45,7 @@ function task2_numeric($numbers)
 
 function task2_calc($action, $numbers)
 {
-    $implodedExpression = implode(" {$action} ", $numbers);
+    $imploded_expression = implode(" {$action} ", $numbers);
     $error_null = false;
     $result = 0;
     if ($action == '/') {
@@ -56,13 +56,13 @@ function task2_calc($action, $numbers)
         }
     }
     if (!$error_null) {
-        eval("\$result = $implodedExpression;");
+        eval("\$result = $imploded_expression;");
         if (is_float($result)) {
             $result = round($result, 2);
         }
-        return "<p>{$implodedExpression} = {$result}</p>";
+        return "<p>{$imploded_expression} = {$result}</p>";
     } else {
-        return "<p>{$implodedExpression} = Нельзя / на 0!!!</p>";
+        return "<p>{$imploded_expression} = Нельзя делить на 0!!!</p>";
     }
 }
 
