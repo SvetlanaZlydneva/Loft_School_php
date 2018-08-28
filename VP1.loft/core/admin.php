@@ -1,7 +1,7 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/core/pdo.php';
-$users = users_list();
-$orders = orders_list();
+$users = get_users_list();
+$orders = get_orders_list();
 //users_list
 $users_list = '<table border="1" cellspacing="0" cellpadding="10">
   <caption style="font-size: 20px; font-weight: 600">Users list</caption>
@@ -14,10 +14,10 @@ $users_list = '<table border="1" cellspacing="0" cellpadding="10">
 
 foreach ($users as $user) {
     $users_list .= "<tr>
-                    <th>{$user['id_user']}</th>
-                    <th>{$user['email_user']}</th>
-                    <th>{$user['name_user']}</th>
-                    <th>{$user['phone_user']}</th>
+                    <th>{$user['user_id']}</th>
+                    <th>{$user['email']}</th>
+                    <th>{$user['name']}</th>
+                    <th>{$user['phone']}</th>
                    </tr>";
 }
 $users_list .= '</table>';
@@ -36,10 +36,10 @@ $orders_list = '<table border="1" cellspacing="0" cellpadding="10">
   </tr>';
 foreach ($orders as $order) {
     $orders_list .= "<tr>
-                    <th>{$order['id_order']}</th>
-                    <th>{$order['name_user']}</th>
-                    <th>{$order['email_user']}</th>
-                    <th>{$order['phone_user']}</th>
+                    <th>{$order['order_id']}</th>
+                    <th>{$order['name']}</th>
+                    <th>{$order['email']}</th>
+                    <th>{$order['phone']}</th>
                     <th>{$order['delivery_address']}</th>
                     <th>{$order['comment']}</th>
                     <th>{$order['payment']}</th>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Авг 26 2018 г., 03:23
+-- Время создания: Авг 28 2018 г., 19:57
 -- Версия сервера: 5.7.20
 -- Версия PHP: 7.1.12
 
@@ -29,10 +29,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `orders` (
-  `id_order` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
   `buyer` int(11) NOT NULL,
   `delivery_address` varchar(255) NOT NULL,
-  `comment` text NOT NULL,
+  `comment` text,
   `payment` varchar(15) DEFAULT NULL,
   `callback` varchar(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -41,14 +41,18 @@ CREATE TABLE `orders` (
 -- Дамп данных таблицы `orders`
 --
 
-INSERT INTO `orders` (`id_order`, `buyer`, `delivery_address`, `comment`, `payment`, `callback`) VALUES
-(1, 1, ' street : Lenina, home : 92', 'no_coment', 'on', 'on'),
-(2, 1, ' street : Mira, home : 99', '-', '-', '-'),
-(3, 2, ' street : Not_found, home : 33', '-', '-', 'on'),
-(4, 3, ' street : Lenina, home : 44, part : 5, appt : 6, floor : 12', '-', 'on', 'on'),
-(5, 1, ' street : Lenina, home : 92', '-', '-', '-'),
-(6, 1, ' street : Lenina, home : 92', '-', '-', '-'),
-(7, 1, ' street : Mira, home : 32', '-', '-', '-');
+INSERT INTO `orders` (`order_id`, `buyer`, `delivery_address`, `comment`, `payment`, `callback`) VALUES
+(19, 13, ' street : Metallyrgov, home : 265, part : 7, appt : 23, floor : 4', 'O_O', 'on', 'on'),
+(20, 14, ' street : Pupkina, home : 234', NULL, 'on', NULL),
+(21, 1, ' street : Mira, home : 92, floor : 5', NULL, NULL, 'on'),
+(22, 1, ' street : Mira, home : 56', NULL, NULL, NULL),
+(23, 1, ' street : Pupkina, home : 32', NULL, NULL, NULL),
+(24, 1, ' street : Metallyrgov, home : 92', NULL, NULL, NULL),
+(25, 1, ' street : Lenina, home : 92', NULL, NULL, NULL),
+(26, 1, ' street : Metallyrgov, home : 92', NULL, NULL, NULL),
+(27, 1, ' street : Lenina, home : 32', NULL, NULL, NULL),
+(28, 1, ' street : Lenina, home : 32', NULL, NULL, NULL),
+(29, 14, ' street : Lenina, home : 32', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -57,20 +61,20 @@ INSERT INTO `orders` (`id_order`, `buyer`, `delivery_address`, `comment`, `payme
 --
 
 CREATE TABLE `users` (
-  `id_user` int(11) NOT NULL,
-  `email_user` varchar(255) NOT NULL,
-  `name_user` varchar(255) NOT NULL,
-  `phone_user` varchar(255) NOT NULL
+  `user_id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id_user`, `email_user`, `name_user`, `phone_user`) VALUES
+INSERT INTO `users` (`user_id`, `email`, `name`, `phone`) VALUES
 (1, 'svetlana_d87@mail.ru', 'Svetlana', '+7 (000) 000 00 00'),
-(2, 'v@mail.ru', 'Gurman', '+7 (000) 000 00 00'),
-(3, 'dima@mail.ru', 'Dima', '+7 (000) 000 00 00');
+(13, 'dima@mail.ru', 'Dima', '+7 (000) 000 00 00'),
+(14, 'vera@mail.ru', 'Vera', '+7 (000) 000 00 00');
 
 --
 -- Индексы сохранённых таблиц
@@ -80,13 +84,13 @@ INSERT INTO `users` (`id_user`, `email_user`, `name_user`, `phone_user`) VALUES
 -- Индексы таблицы `orders`
 --
 ALTER TABLE `orders`
-  ADD PRIMARY KEY (`id_order`);
+  ADD PRIMARY KEY (`order_id`);
 
 --
 -- Индексы таблицы `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id_user`);
+  ADD PRIMARY KEY (`user_id`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
@@ -96,13 +100,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
