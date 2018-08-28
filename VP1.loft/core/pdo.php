@@ -32,8 +32,7 @@ function registration_order($id, $address, $comment, $payment, $callback)
 function remember_order_id()
 {
     global $pdo;
-    $order_id = $pdo->query("SELECT order_id FROM orders ORDER BY order_id DESC")->fetch(PDO::FETCH_ASSOC);
-    return $order_id['order_id'];
+    return $pdo->lastInsertId("order_id");
 }
 
 function get_info_for_order()
