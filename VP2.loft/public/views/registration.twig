@@ -1,0 +1,27 @@
+{% include 'head.twig' %}
+<title>{{title}}</title>
+{% include 'header.twig' %}
+<div class="registration box_form">
+    <form action="">
+        <fieldset>
+            <legend>Регистрация</legend>
+            <input type="text" placeholder="*Имя" name="name" required>
+            <input type="email" placeholder="*Email" name="email" required>
+            <input type="password" placeholder="*Придумайте пароль" name="password" required>
+            <input type="password" placeholder="*Подтвердите пароль" name="passwordConfirm" required>
+            <input type="number" placeholder="*Возраст" name="age" required>
+            <textarea name="about" placeholder="Напишите о Себе"></textarea>
+            <input type="submit" name="submitR" value="OK">
+        </fieldset>
+    </form>
+    <div>
+        <span>Зарегистрированы ? </span><a href="main">Авторизируйтесь</a>
+    </div>
+</div>
+<div class="hidden_registration">
+    <div class="echo_results">
+        <h2>Поздравляем!<br>Вы успешно зарегистрированы в системе.</h2>
+        <div></div>
+    </div>
+</div>
+{% include 'footer.twig' %}
