@@ -1,8 +1,8 @@
 <?php
 
-namespace Src\BaseClass;
+namespace Src;
 
-use Src\InterfaceRental\Rent;
+use Src\RentInterface\Rent;
 
 abstract class CarRent implements Rent
 {

@@ -2,14 +2,15 @@
 
 namespace Src\Rates;
 
-use Src\AddServices\GpsService;
-use Src\BaseClass\CarRent;
+use Src\Traits\GpsService;
+use Src\CarRent;
 
-class Basic extends CarRent
+class BasicCarRent extends CarRent
 {
     protected $rateName = 'base';
     protected $rentPrice;
     protected $ageFactor;
+    protected $ratioYoungDriver = 0.1;
     use GpsService;
 
     public function getDataForCalculation($km, $hours, $age, $gps = null)
@@ -17,7 +18,7 @@ class Basic extends CarRent
         if (parent::verificationRateData($km, $hours, $age)) {
             $this->rentPrice = parent::baseCostRent($this->rateName, $km, $hours);
             $this->ageFactor = parent::ageFactor($age);
-            if ($this->ageFactor == 0.1) {
+            if ($this->ageFactor == $this->ratioYoungDriver) {
                 $this->rentPrice += $this->rentPrice * $this->ageFactor;
             }
             if ($gps == 'on') {

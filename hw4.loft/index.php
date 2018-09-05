@@ -1,11 +1,11 @@
 <?php
-require_once 'src/autoload.php';
+require_once 'Src/autoload.php';
 //add gps = 'on' ;
 //add addDriver = 'on';
-$base = new Src\Rates\Basic();
-$hourly = new Src\Rates\Hourly();
-$daily = new Src\Rates\Daily();
-$student = new Src\Rates\Student();
+$base = new Src\Rates\BasicCarRent();
+$hourly = new Src\Rates\HourlyCarRent();
+$daily = new Src\Rates\DailyCarRent();
+$student = new Src\Rates\StudentCarRent();
 echo "<h2>Тариф базовый</h2>";
 $base->getDataForCalculation(5, 2, 20, 'on');
 $base->getDataForCalculation(3, 6, 24);

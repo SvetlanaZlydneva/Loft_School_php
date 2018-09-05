@@ -2,31 +2,33 @@
 
 namespace Src\Rates;
 
-use Src\AddServices\GpsService;
-use Src\AddServices\AdditionalDriver;
-use Src\BaseClass\CarRent;
+use Src\Traits\GpsService;
+use Src\Traits\ExtraDriverService;
+use Src\CarRent;
 
-//(окруление до 24ч / 24,30ч=24ч / 24,31 = округление до 48 часов)
-class Daily extends CarRent
+class DailyCarRent extends CarRent
 {
     protected $rateName = 'daily';
     protected $rentPrice;
     protected $ageFactor;
-    use GpsService, AdditionalDriver;
+    protected $ratioYoungDriver = 0.1;
+    protected $isDay = 24;
+    protected $halfAnHour = 30;
+    use GpsService, ExtraDriverService;
 
     public function getDataForCalculation($km, $hours, $age, $gps = null, $driver = null)
     {
         if (parent::verificationRateData($km, $hours, $age)) {
-            if (($hours * 60) >= 30) {
-                if ($hours % 24 == 0 && explode('.', $hours)[1] >= 30 || $hours < 24) {
-                    $hours = (ceil($hours / 24)) * 24;
-                } else {
-                    $hours = (floor($hours / 24)) * 24;
-                }
+            //если отстаток от деления == сутки и минуты указанные после суток... больше и равно 30
+            // или указанные часы меньше чем сутки
+            if ($hours % $this->isDay == 0 && explode('.', $hours)[1] >= $this->halfAnHour || $hours < $this->isDay) {
+                $hours = (ceil($hours / $this->isDay)) * $this->isDay;//округляем в большую сторону до 24ч/48ч и тд
+            } else {
+                $hours = (floor($hours / $this->isDay)) * $this->isDay;//округляем в меньшую сторону
             }
             $this->rentPrice = parent::baseCostRent($this->rateName, $km, $hours);
             $this->ageFactor = parent::ageFactor($age);
-            if ($this->ageFactor == 0.1) {
+            if ($this->ageFactor == $this->ratioYoungDriver) {
                 $this->rentPrice += $this->rentPrice * $this->ageFactor;
             }
             if ($gps == 'on') {

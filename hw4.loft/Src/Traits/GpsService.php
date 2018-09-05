@@ -1,6 +1,6 @@
 <?php
 
-namespace Src\AddServices;
+namespace Src\Traits;
 
 trait GpsService
 {
@@ -10,13 +10,5 @@ trait GpsService
             $hours = 1;
         }
         return ceil($hours * 15);
-    }
-}
-
-trait AdditionalDriver
-{
-    public function getDriver()
-    {
-        return 100;
     }
 }

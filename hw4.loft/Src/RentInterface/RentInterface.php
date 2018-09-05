@@ -1,6 +1,6 @@
 <?php
 
-namespace Src\InterfaceRental;
+namespace Src\RentInterface;
 
 interface Rent
 {
