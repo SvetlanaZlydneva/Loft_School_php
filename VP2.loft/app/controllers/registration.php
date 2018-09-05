@@ -43,15 +43,16 @@ class Registration
 
     public function inspectedEmptyPost($value)
     {
-        if (!is_int($_POST['age'])) {
-            $this->resultAuthorization = 0;
-        }
+
         if (!empty($this->user->searchEmail($_POST['email']))) {
             $this->resultAuthorization = 2;
         } else {
-            if (!empty($_POST[$value])) {
-                return trim(htmlspecialchars(strip_tags($_POST[$value])));
-            } elseif (empty($_POST['about'])) {
+            if (!is_int($_POST['age'])) {
+                $this->resultAuthorization = 0;
+            }
+            if (empty($_POST[$value]) && $value!='about') {
+                $this->resultAuthorization = 0;
+            } else {
                 $this->resultAuthorization = 1;
                 return trim(htmlspecialchars(strip_tags($_POST[$value])));
             }

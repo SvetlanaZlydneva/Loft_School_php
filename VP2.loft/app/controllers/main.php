@@ -34,7 +34,7 @@ class Main
                     if (strcmp(md5($_POST['password']), $password) == 0) {
                         session_start();
                         $_SESSION['idUser'] = $idUser;
-                        if ($_POST['email'] == 'admin') {
+                        if ($_POST['email'] == 'admin@mail.ru') {//email Администратора idUser=1
                             $resultAuthorization = 4;
                         } else {
                             $resultAuthorization = 1;
@@ -49,5 +49,4 @@ class Main
         }
         echo $resultAuthorization;
     }
-
 }

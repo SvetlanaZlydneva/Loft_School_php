@@ -4,11 +4,19 @@
     <div class="menu">
         <nav>
             <ul>
-                <li><a href="main">VP2_ZlydnevaS</a></li>
-                <li><a href="registration">Регистрация</a></li>
-                {{ userImages|raw }}
-                {{ listUsers |raw}}
-                {{ listImages |raw}}
+
+                {% if session.idUser %}
+                    {% if session.idUser ==1 %}
+                        <li><a href="listUsers">Список пользователей</a></li>
+                        <li><a href="listImages">Список фотографий</a></li>
+                        <li><a href="userImages/deleteSession">Выход</a></li>
+                    {% else %}
+                    <li><a href="userImages">Галерея</a></li>
+                    {% endif %}
+                {% else %}
+                    <li><a href="main">VP2_ZlydnevaS</a></li>
+                    <li><a href="registration">Регистрация</a></li>
+                {% endif %}
             </ul>
         </nav>
     </div>

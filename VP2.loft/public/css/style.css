@@ -102,51 +102,124 @@ input[type= "submit"] {
 .echo_results h2 {
     margin-bottom: 15px;
 }
+
 .echo_results a {
     padding: 10px 25px;
     background: #fff;
     color: rgba(0, 128, 0, .7);
     border: 1px dotted rgba(0, 128, 0, .7);
 }
-/*.no_content {*/
-    /*text-align: center;*/
-    /*color: red;*/
-    /*font-size: 24px;*/
-/*}*/
 
-/*table {*/
-    /*border-collapse: collapse;*/
-    /*margin: 25px auto;*/
-/*}*/
+.boxUser {
+    width: 380px;
+    border: 1px solid lightseagreen;
+    margin-top: 50px;
+    padding: 20px;
+    float: left;
+}
 
-/*table, th, td {*/
-    /*border: 1px solid black;*/
-    /*padding: 5px 15px;*/
-/*}*/
+.userPhoto img {
+    width: 150px;
+    height: 150px;
+    float: left;
+    border-radius: 50%;
+}
 
-/*.title_user_list {*/
-    /*text-align: center;*/
-    /*color: green;*/
-    /*font-size: 24px;*/
-    /*margin-top: 15px;*/
-    /*padding: 5px;*/
-/*}*/
+.userName {
+    float: right;
+    padding: 60px 90px 0 0;
+}
 
-/*.photo {*/
-    /*width: 400px;*/
-    /*padding: 15px;*/
-    /*margin: 5% auto;*/
-/*}*/
+.files {
+    clear: both;
+    padding-top: 30px;
+}
 
-/*.sort a {*/
-    /*color: red;*/
-/*}*/
+.files form {
+    position: relative;
+}
 
-/*.no_content {*/
-    /*text-align: center;*/
-/*}*/
+.files input[type= "submit"] {
+    width: 20%;
+    position: absolute;
+    top: 1px;
+    right: 3px;
+    padding: 25px 0;
+}
 
-/*.no_content a {*/
-    /*text-decoration: none;*/
-    /*color: darkblue;*/
-/*}*/
+.files form fieldset {
+    padding: 20px 0;
+    margin-top: 10px;
+}
+
+input[name="exit"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.userInfo {
+    position: relative;
+}
+
+.containerGallery {
+    width: 1400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.photos {
+    margin-top: 50px;
+    width: 1000px;
+    float: right;
+
+}
+
+.photos img {
+    display: inline-block;
+    width: 300px;
+    height: auto;
+    border: 1px solid lightseagreen;
+}
+
+table {
+    margin: 0 auto 50px;
+}
+
+.nameList {
+    text-align: center;
+    margin: 50px 0;
+}
+
+table, th, tr {
+    border: 1px solid lightseagreen;
+    border-spacing: 0;
+}
+
+th {
+    padding: 10px;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.sortByAge {
+    width: 300px;
+    margin: 0 auto 50px;
+}
+.sortByAge input{
+    width: 49%;
+}
+.sortByAge fieldset{
+    padding: 15px;
+}
+.initFakers{
+    width: 200px;
+    margin: 0 auto 50px;
+}
+.initFakers input{
+    width: 100%;
+}

@@ -1,10 +1,29 @@
 {% include 'head.twig' %}
 <title>{{title}}</title>
 {% include 'header.twig' %}
-{{ userImages }}
-{{ listUsers }}
-{{ listImages }}
-</ul>
-</nav>
+<h2 class="nameList">Список фотографий</h2>
+<div class="initFakers">
+    <form action="listImages/initFakers" method="post">
+        <input type="submit" value="Photo Generation">
+    </form>
 </div>
+<table>
+    <thead>
+    <tr>
+        <th>idFile</th>
+        <th>user</th>
+        <th>photo</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    {% for image in listImages %}
+        <tr>
+            <th>{{ image.idFile|e }}</th>
+            <th>{{ image.email|e }}</th>
+            <th><img src="public/images/photo/{{ image.fileName|e }}" alt="img"></th>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
 {% include 'footer.twig' %}

@@ -11,6 +11,7 @@ class View
     {
         $this->loader = new \Twig_Loader_Filesystem(VIEWS);
         $this->twig = new \Twig_Environment($this->loader);
+        $this->twig->addGlobal('session', $_SESSION);
     }
 
     public function twigLoad($filename, array $data)

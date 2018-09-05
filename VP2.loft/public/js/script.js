@@ -44,6 +44,10 @@ $('.authorization form').on('submit', function (event) {
                 $('.echo_results div').html('<a href="main">OK</a>');
                 $('.echo_results').css({'background': "rgba(255,0,0,.5)"});
                 $('.hidden_authorization').show();
+            } else if (autho == 4) {
+                $('.hidden_authorization h2').html("Панель Администратора");
+                $('.echo_results div').html('<a href="listUsers">OK</a>');
+                $('.hidden_authorization').show();
             }
             else {
                 $('.hidden_authorization h2').html("Пароль введен не верно");

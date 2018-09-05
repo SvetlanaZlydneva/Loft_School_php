@@ -1,5 +1,49 @@
 {% include 'head.twig' %}
-<title>{{title}}</title>
+<title>{{ title }}</title>
 {% include 'header.twig' %}
-
+<h2 class="nameList">Список пользователей</h2>
+<div class="initFakers">
+    <form action="listUsers/initFakers" method="post">
+        <input type="submit" value="User Generation">
+    </form>
+</div>
+<div class="sortByAge">
+    <fieldset>
+        <legend>Сортировка по возрасту</legend>
+        <form action="listUsers" method="post">
+            <input type="submit" name="sort" value="asc">
+            <input type="submit" name="sort" value="desc">
+        </form>
+    </fieldset>
+</div>
+<table>
+    <thead>
+    <tr>
+        <th>idUser</th>
+        <th>name</th>
+        <th>email</th>
+        <th>age</th>
+        <th>ageStatus</th>
+        <th>about</th>
+        <th>photo</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for user in listUsers %}
+        <tr>
+            <th>{{ user.idUser|e }}</th>
+            <th>{{ user.name|e }}</th>
+            <th>{{ user.email|e }}</th>
+            <th>{{ user.age|e }}</th>
+            {% if user.age<18 %}
+                <th>Несовершеннолетний</th>
+            {% else %}
+                <th>Совершеннолетний</th>
+            {% endif %}
+            <th>{{ user.about|e }}</th>
+            <th><img src="public/images/profile/{{ user.photo|e }}" alt="img" class="avatar"></th>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
 {% include 'footer.twig' %}
