@@ -12,7 +12,7 @@ class DailyCarRent extends CarRent
     protected $rentPrice;
     protected $ageFactor;
     protected $ratioYoungDriver = 0.1;
-    protected $isDay = 24;
+    protected $hoursInDay = 24;
     protected $halfAnHour = 30;
     use GpsService, ExtraDriverService;
 
@@ -21,10 +21,13 @@ class DailyCarRent extends CarRent
         if (parent::verificationRateData($km, $hours, $age)) {
             //если отстаток от деления == сутки и минуты указанные после суток... больше и равно 30
             // или указанные часы меньше чем сутки
-            if ($hours % $this->isDay == 0 && explode('.', $hours)[1] >= $this->halfAnHour || $hours < $this->isDay) {
-                $hours = (ceil($hours / $this->isDay)) * $this->isDay;//округляем в большую сторону до 24ч/48ч и тд
+            if ($hours % $this->hoursInDay == 0
+                && explode('.', $hours)[1] >= $this->halfAnHour
+                || $hours < $this->hoursInDay) {
+                //округляем в большую сторону до 24ч/48ч и тд
+                $hours = (ceil($hours / $this->hoursInDay)) * $this->hoursInDay;
             } else {
-                $hours = (floor($hours / $this->isDay)) * $this->isDay;//округляем в меньшую сторону
+                $hours = (floor($hours / $this->hoursInDay)) * $this->hoursInDay;//округляем в меньшую сторону
             }
             $this->rentPrice = parent::baseCostRent($this->rateName, $km, $hours);
             $this->ageFactor = parent::ageFactor($age);
