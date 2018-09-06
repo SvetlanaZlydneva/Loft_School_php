@@ -14,7 +14,7 @@ class Registration
     protected $password;
     protected $age;
     protected $about;
-    protected $resultAuthorization = 1;
+    protected $resultAuthorization;
 
 
     public function __construct()
@@ -25,18 +25,23 @@ class Registration
 
     public function display()
     {
-        $this->twig->twigLoad('registration', ['title' => 'registration']);
+        $this->twig->view('registration', ['title' => 'registration']);
     }
 
-    public function getPost()
+    public function getPostVar()
     {
         $this->name = $this->inspectedEmptyPost('name');
         $this->email = $this->inspectedEmptyPost('email');
         $this->password = $this->inspectedEmptyPost('password');
         $this->age = $this->inspectedEmptyPost('age');
         $this->about = $this->inspectedEmptyPost('about');
+        $this->resultRegistration();
+    }
+
+    public function resultRegistration()
+    {
         if ($this->resultAuthorization == 1) {
-            $this->initialize();
+            $this->register();
         }
         echo $this->resultAuthorization;
     }
@@ -50,7 +55,7 @@ class Registration
             if (!is_int($_POST['age'])) {
                 $this->resultAuthorization = 0;
             }
-            if (empty($_POST[$value]) && $value!='about') {
+            if (empty($_POST[$value]) && $value != 'about') {
                 $this->resultAuthorization = 0;
             } else {
                 $this->resultAuthorization = 1;
@@ -59,9 +64,9 @@ class Registration
         }
     }
 
-    protected function initialize()
+    protected function register()
     {
-        $this->user->insertUser(
+        $this->user->create(
             $this->name,
             $this->email,
             $this->password,

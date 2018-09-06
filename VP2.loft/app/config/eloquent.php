@@ -2,8 +2,8 @@
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 
-require_once MODELS . 'user.php';
-require_once MODELS . 'file.php';
+require_once MODELS . 'User.php';
+require_once MODELS . 'File.php';
 $capsule = new Capsule;
 
 $capsule->addConnection([

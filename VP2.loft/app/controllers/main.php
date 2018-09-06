@@ -18,7 +18,7 @@ class Main
 
     public function display()
     {
-        $this->twig->twigLoad('main', [
+        $this->twig->view('main', [
             'title' => 'authorization'
         ]);
     }
@@ -26,25 +26,17 @@ class Main
     public function authorization()
     {
         $resultAuthorization = 0;
-        if (!empty($_POST['email'])) {
-            if (!empty($_POST['password'])) {
-                $idUser = $this->user->searchEmail($_POST['email']);
-                if ($idUser > 0) {
-                    $password = $this->user->getPassword($idUser);
-                    if (strcmp(md5($_POST['password']), $password) == 0) {
-                        session_start();
-                        $_SESSION['idUser'] = $idUser;
-                        if ($_POST['email'] == 'admin@mail.ru') {//email Администратора idUser=1
-                            $resultAuthorization = 4;
-                        } else {
-                            $resultAuthorization = 1;
-                        }
-                    } else {
-                        $resultAuthorization = 3;
-                    }
-                } else {
-                    $resultAuthorization = 2;
-                }
+        $email = $_POST['email'];
+        $password = md5($_POST['password']);
+        $idUser = $this->user->searchEmail($_POST['email']);
+        $user = $this->user->getInfoUser($idUser);
+        if ($password == $user[0]['password'] && $email == $user[0]['email']) {
+            session_start();
+            $_SESSION['idUser'] = $idUser;
+            if ($user[0]['rights'] == 1) {
+                $resultAuthorization = 2;
+            } else {
+                $resultAuthorization = 1;
             }
         }
         echo $resultAuthorization;

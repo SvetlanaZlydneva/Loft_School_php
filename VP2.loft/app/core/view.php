@@ -14,7 +14,7 @@ class View
         $this->twig->addGlobal('session', $_SESSION);
     }
 
-    public function twigLoad($filename, array $data)
+    public function view($filename, array $data)
     {
         echo $this->twig->render($filename . ".twig", $data);
     }

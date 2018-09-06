@@ -9,3 +9,5 @@ define("VIEWS", PUB . 'views/');
 define('CONTROLLERS', APP . 'controllers/');
 define('ERRORS', APP . 'errors/');
 define('MODELS', APP . 'models/');
+define('PROFILE', PUB . 'images/profile/');
+define('PHOTO', PUB . 'images/photo/');

@@ -15,6 +15,7 @@ class UserImages
     protected $name;
     protected $email;
     protected $photo;
+    protected $avatar;
     protected $postFileName;
 
     public function __construct()
@@ -27,7 +28,7 @@ class UserImages
     public function display()
     {
         $this->initUserData();
-        $this->twig->twigLoad('userImages', [
+        $this->twig->view('userImages', [
             'title' => 'MyGallery',
             'name' => $this->name,
             'email' => $this->email,
@@ -38,72 +39,68 @@ class UserImages
 
     public function initUserData()
     {
-        $this->name = $this->user->getById($_SESSION['idUser'], 'name');
-        $this->email = $this->user->getById($_SESSION['idUser'], 'email');
-        if (empty($this->user->getById($_SESSION['idUser'], 'photo'))) {
-            $this->photo = 'noPhoto.jpg';
+        $user = $this->user->getInfoUser($_SESSION['idUser']);
+        $this->name = $user[0]['name'];
+        $this->email = $user[0]['email'];
+        $this->photo = $user[0]['photo'];
+        if (empty($this->photo)) {
+            $this->avatar = 'noPhoto.jpg';
         } else {
-            $this->photo = $this->user->getById($_SESSION['idUser'], 'photo');
+            $this->avatar = $this->photo;
         }
     }
 
-    public function deleteSession()
+    public function getPostProfilePhoto()
     {
-        session_destroy();
-        header('Location:' . HOST);
-    }
-
-    public function updateProfilePhoto()
-    {
-        if ($this->inspectedAndMoveFile('profilePhoto')) {
+        if ($this->inspectedFile('profilePhoto')) {
+            $this->moveFile('profilePhoto');
             $this->user->uploadProfilePhoto($this->postFileName);
-        } else {
-            $this->user->uploadProfilePhoto('notFile.jpg');
         }
         header('Location:' . HOST . 'userImages');
     }
 
-    public function uploadPhoto()
+    public function getPostPhoto()
     {
-        if ($this->inspectedAndMoveFile('photo')) {
+        if ($this->inspectedFile('photo')) {
+            $this->moveFile('photo');
             $this->resizePhoto($this->postFileName);
             $this->file->uploadPhoto($this->postFileName);
-        } else {
-            $this->file->uploadPhoto('notFile.jpg');
         }
         header('Location:' . HOST . 'userImages');
     }
 
-    public function inspectedAndMoveFile($fileName)
+    public function inspectedFile($fileName)
     {
-        $resultInspected = false;
         $files = ['jpg', 'png', 'jpeg'];
         if (!empty($_FILES[$fileName])) {
             $this->postFileName = $_FILES[$fileName]['name'];
             $fileExpansion = explode('.', $_FILES[$fileName]['name']);
             if (in_array($fileExpansion[1], $files)) {
-                if ($fileName == 'profilePhoto') {
-                    move_uploaded_file(
-                        $_FILES[$fileName]['tmp_name'],
-                        PUB . 'images/profile/' . $_FILES[$fileName]['name']
-                    );
-                } else {
-                    move_uploaded_file(
-                        $_FILES[$fileName]['tmp_name'],
-                        PUB . 'images/photo/' . $_FILES[$fileName]['name']
-                    );
-                }
-                $resultInspected = true;
+                return true;
             }
         }
-        return $resultInspected;
+    }
+
+    public function moveFile($fileName)
+    {
+        if ($fileName == 'profilePhoto') {
+            move_uploaded_file(
+                $_FILES[$fileName]['tmp_name'],
+                PROFILE . $_FILES[$fileName]['name']
+            );
+        } else {
+            move_uploaded_file(
+                $_FILES[$fileName]['tmp_name'],
+                PHOTO . $_FILES[$fileName]['name']
+            );
+        }
     }
 
     public function resizePhoto($photo)
     {
-        Image::make(PUB . 'images/photo/' . $photo)
+        Image::make(PHOTO . $photo)
             ->resize(300, 300)
-            ->insert(PUB . 'images/photo/watermark.png')
-            ->save(PUB . 'images/photo/' . $photo);
+            ->insert(PHOTO . '/watermark.png')
+            ->save(PHOTO . $photo);
     }
 }

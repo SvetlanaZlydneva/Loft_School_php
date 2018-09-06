@@ -22,7 +22,7 @@ class ListImages
     public function display()
     {
         $this->getListImages();
-        $this->twig->twigLoad('listImages', ['title' => 'listImages', 'listImages' => $this->listImages]);
+        $this->twig->view('listImages', ['title' => 'listImages', 'listImages' => $this->listImages]);
     }
 
     public function getListImages()

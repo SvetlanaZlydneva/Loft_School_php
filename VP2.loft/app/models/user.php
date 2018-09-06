@@ -14,13 +14,13 @@ class User extends Eloquent
         return $result;
     }
 
-    public function getPassword($idUser)
+    public function getInfoUser($idUser)
     {
-        $result = $this->where('idUser', $idUser)->value('password');
+        $result = $this->where('idUser', $idUser)->get()->toarray();
         return $result;
     }
 
-    public function insertUser($name, $email, $password, $age, $about)
+    public function create($name, $email, $password, $age, $about)
     {
         $this->name = $name;
         $this->email = $email;

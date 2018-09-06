@@ -2,10 +2,11 @@ $('.registration form').on('submit', function (event) {
     event.preventDefault();
     var form = $(this).serialize();
     $.ajax({
-        url: 'http://' + window.location.host + '/registration/getPost',
+        url: 'http://' + window.location.host + '/registration/getPostVar',
         type: 'POST',
         data: form,
         success: function (data) {
+            console.log(data);
             if (data == 1) {
                 $('.hidden_registration').show();
                 $('.echo_results div').html('<a href="main">OK</a>');
@@ -40,17 +41,12 @@ $('.authorization form').on('submit', function (event) {
                 $('.echo_results div').html('<a href="userImages">OK</a>');
             }
             else if (autho == 2) {
-                $('.hidden_authorization h2').html("Пользователя с таким email не существует");
-                $('.echo_results div').html('<a href="main">OK</a>');
-                $('.echo_results').css({'background': "rgba(255,0,0,.5)"});
-                $('.hidden_authorization').show();
-            } else if (autho == 4) {
                 $('.hidden_authorization h2').html("Панель Администратора");
                 $('.echo_results div').html('<a href="listUsers">OK</a>');
                 $('.hidden_authorization').show();
             }
             else {
-                $('.hidden_authorization h2').html("Пароль введен не верно");
+                $('.hidden_authorization h2').html("Неверный логин и/или пароль");
                 $('.echo_results div').html('<a href="main">OK</a>');
                 $('.echo_results').css({'background': "rgba(255,0,0,.5)"});
                 $('.hidden_authorization').show();

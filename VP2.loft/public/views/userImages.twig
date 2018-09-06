@@ -11,19 +11,19 @@
                 <h2>{{ name }}</h2>
                 <p>{{ email }}</p>
             </div>
-            <form action="userImages/deleteSession" method="post">
+            <form action="user" method="post">
                 <input type="submit" value="Выход" name="exit">
             </form>
         </div>
         <div class="files">
-            <form action="userImages/updateProfilePhoto" enctype="multipart/form-data" method="post">
+            <form action="userImages/getPostProfilePhoto" enctype="multipart/form-data" method="post">
                 <fieldset>
                     <legend>Изменить аватар</legend>
                     <input type="file" name="profilePhoto">
                     <input type="submit" value="OK">
                 </fieldset>
             </form>
-            <form action="userImages/uploadPhoto" enctype="multipart/form-data" method="post">
+            <form action="userImages/getPostPhoto" enctype="multipart/form-data" method="post">
                 <fieldset>
                     <legend>Добавить фото в галерею</legend>
                     <input type="file" name="photo">

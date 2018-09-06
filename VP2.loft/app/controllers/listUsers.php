@@ -23,7 +23,7 @@ class ListUsers
     public function display()
     {
         $this->getListUsers();
-        $this->twig->twigLoad('listUsers', ['title' => 'listUsers', 'listUsers' => $this->listUsers]);
+        $this->twig->view('listUsers', ['title' => 'listUsers', 'listUsers' => $this->listUsers]);
     }
 
     public function getListUsers()
