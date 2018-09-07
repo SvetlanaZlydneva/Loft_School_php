@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="public/css/mystyle.css">
+    <title>Admin</title>
+</head>
+<body>
+<h2><a href="image">-> Задание #3 Image</a></h2>
+<h2>Список пользователей</h2>
+<table>
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>email</th>
+        <th>name</th>
+        <th>phone</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for user in users %}
+        <tr>
+            <th>{{ user.idUser|e }}</th>
+            <th>{{ user.name|e }}</th>
+            <th>{{ user.email|e }}</th>
+            <th>{{ user.phone|e }}</th>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<h2>Список заказов</h2>
+<table>
+    <thead>
+    <tr>
+        <th>№ order</th>
+        <th>name</th>
+        <th>email</th>
+        <th>phone</th>
+        <th>address</th>
+        <th>comment</th>
+        <th>payment</th>
+        <th>callback</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for order in orders %}
+        <tr>
+            <th>{{ order.idOrder|e }}</th>
+            <th>{{ order.name|e }}</th>
+            <th>{{ order.email|e }}</th>
+            <th>{{ order.phone|e }}</th>
+            <th>{{ order.address|e }}</th>
+            <th>{{ order.comment|e }}</th>
+            <th>{{ order.payment|e }}</th>
+            <th>{{ order.callback|e }}</th>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>
