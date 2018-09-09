@@ -8,8 +8,8 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 Capsule::schema()->dropIfExists('category');
 Capsule::schema()->create('category', function (Blueprint $table) {
     $table->increments('idCategory');
-    $table->integer('parent')->default(0);
     $table->string('nameCategory');
+    $table->string('descriptionCategory');
 });
 Capsule::schema()->dropIfExists('product');
 Capsule::schema()->create('product', function (Blueprint $table) {
@@ -17,5 +17,6 @@ Capsule::schema()->create('product', function (Blueprint $table) {
     $table->string('nameProduct');
     $table->integer('category');
     $table->double('price');
+    $table->string('photo');
     $table->string('description');
 });
