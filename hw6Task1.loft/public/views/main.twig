@@ -1,0 +1,23 @@
+{% include 'head.twig' %}
+<title>{{ title }}</title>
+{% include 'header.twig' %}
+<div class="authorization box_form">
+    <form action="" method="post">
+        <fieldset>
+            <legend>Авторизация</legend>
+            <input type="email" placeholder="Email" name="email" required>
+            <input type="password" placeholder="Пароль" name="password" required>
+            <input type="submit" name="sub_authorization" value="OK">
+        </fieldset>
+    </form>
+    <div class="no_authorization">
+        <span>Нет аккаунта ? </span><a href="registration">Зарегистрируйтесь</a>
+    </div>
+</div>
+<div class="hidden_authorization">
+    <div class="echo_results">
+        <h2>Авторизация прошла успешно</h2>
+        <div></div>
+    </div>
+</div>
+{% include 'footer.twig' %}
