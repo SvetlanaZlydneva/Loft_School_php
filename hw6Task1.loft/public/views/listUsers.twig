@@ -7,6 +7,11 @@
         <input type="submit" value="User Generation">
     </form>
 </div>
+<div class="initFakers">
+    <form action="users/newUser" method="post">
+        <input type="submit" value="New User">
+    </form>
+</div>
 <div class="sortByAge">
     <fieldset>
         <legend>Сортировка по возрасту</legend>
@@ -44,8 +49,8 @@
             {% endif %}
             <th>{{ user.about|e }}</th>
             <th><img src="public/images/profile/{{ user.photo|e }}" alt="img" class="avatar"></th>
-            <th><a class="edit" href="editUser/getId/?id={{ user.idUser }}">edit</a></th>
-            <th><a class="delete" href="editUser/getId/?id={{ user.idUser }}">delete</a></th>
+            <th><a class="edit" href="users/edit/?id={{ user.idUser }}">edit</a></th>
+            <th><a class="delete" href="users/delete/?id={{ user.idUser }}">delete</a></th>
         </tr>
     {% endfor %}
     </tbody>

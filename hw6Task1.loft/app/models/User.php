@@ -38,8 +38,7 @@ class User extends Eloquent
 
     public function uploadProfilePhoto($fileName)
     {
-        $result = $this->where('idUser', $_SESSION['idUser'])->update(array('photo' => $fileName));
-        return $result;
+        $this->where('idUser', $_SESSION['idUser'])->update(array('photo' => $fileName));
     }
 
     public function listUsersBySort($sort)
@@ -54,8 +53,13 @@ class User extends Eloquent
         return $result;
     }
 
-    public function updateModifiedField($idUser, $name, $value)
+    public function deleteById($idUser)
     {
-        $result = $this->where('idUser', $idUser)->update(array($name => $value));
+        $this->where('idUser', $idUser)->delete();
+    }
+
+    public function updateById($idUser, $column, $value)
+    {
+        $this->where('idUser', $idUser)->update(array($column => $value));
     }
 }

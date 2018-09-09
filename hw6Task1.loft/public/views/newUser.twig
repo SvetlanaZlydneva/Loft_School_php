@@ -1,0 +1,18 @@
+{% include 'head.twig' %}
+<title>{{title}}</title>
+{% include 'header.twig' %}
+<div class="box_form">
+    <form action="getPostVar" method="post">
+        <fieldset>
+            <legend>New User</legend>
+            <input type="text" placeholder="*Имя" name="name" required>
+            <input type="email" placeholder="*Email" name="email" required>
+            <input type="password" placeholder="*Придумайте пароль" name="password" required>
+            <input type="password" placeholder="*Подтвердите пароль" name="passwordConfirm" required>
+            <input type="number" placeholder="*Возраст" name="age" required>
+            <textarea name="about" placeholder="Напишите о Себе"></textarea>
+            <input type="submit" name="submitR" value="OK">
+        </fieldset>
+    </form>
+</div>
+{% include 'footer.twig' %}

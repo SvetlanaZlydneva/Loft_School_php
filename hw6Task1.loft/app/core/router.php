@@ -1,7 +1,9 @@
 <?php
 $controllerName = 'main';
 $actionName = 'display';
-$routes = explode('/', $_SERVER['REQUEST_URI']);
+$urlParts = explode('?', $_SERVER['REQUEST_URI']);
+$routes = explode('/', $urlParts[0]);
+
 if (!empty($routes[1])) {
     $controllerName = $routes[1];
 }
@@ -9,7 +11,6 @@ if (!empty($routes[2])) {
     $actionName = $routes[2];
 }
 $file = CONTROLLERS . $controllerName . '.php';
-
 try {
     if (file_exists($file)) {
         require_once $file;

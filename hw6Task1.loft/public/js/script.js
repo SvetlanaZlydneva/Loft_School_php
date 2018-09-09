@@ -53,16 +53,3 @@ $('.authorization form').on('submit', function (event) {
         }
     });
 });
-
-$('.update form').on('submit', function (event) {
-    event.preventDefault();
-    $('.errorPage').hide();
-    var user = $(this).serialize();
-    $.ajax({
-        url: 'http://' + window.location.host + '/editUser/update',
-        type: 'POST',
-        data: user,
-        success: function (update) {}
-    });
-
-});
