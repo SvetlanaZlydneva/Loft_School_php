@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Авг 28 2018 г., 19:57
+-- Время создания: Сен 10 2018 г., 20:28
 -- Версия сервера: 5.7.20
 -- Версия PHP: 7.1.12
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `VP1`
+-- База данных: `hw5`
 --
 
 -- --------------------------------------------------------
@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `orders` (
-  `order_id` int(11) NOT NULL,
+  `idOrder` int(11) NOT NULL,
   `buyer` int(11) NOT NULL,
-  `delivery_address` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
   `comment` text,
   `payment` varchar(15) DEFAULT NULL,
   `callback` varchar(15) DEFAULT NULL
@@ -41,18 +41,15 @@ CREATE TABLE `orders` (
 -- Дамп данных таблицы `orders`
 --
 
-INSERT INTO `orders` (`order_id`, `buyer`, `delivery_address`, `comment`, `payment`, `callback`) VALUES
-(19, 13, ' street : Metallyrgov, home : 265, part : 7, appt : 23, floor : 4', 'O_O', 'on', 'on'),
-(20, 14, ' street : Pupkina, home : 234', NULL, 'on', NULL),
-(21, 1, ' street : Mira, home : 92, floor : 5', NULL, NULL, 'on'),
-(22, 1, ' street : Mira, home : 56', NULL, NULL, NULL),
-(23, 1, ' street : Pupkina, home : 32', NULL, NULL, NULL),
-(24, 1, ' street : Metallyrgov, home : 92', NULL, NULL, NULL),
-(25, 1, ' street : Lenina, home : 92', NULL, NULL, NULL),
-(26, 1, ' street : Metallyrgov, home : 92', NULL, NULL, NULL),
-(27, 1, ' street : Lenina, home : 32', NULL, NULL, NULL),
-(28, 1, ' street : Lenina, home : 32', NULL, NULL, NULL),
-(29, 14, ' street : Lenina, home : 32', NULL, NULL, NULL);
+INSERT INTO `orders` (`idOrder`, `buyer`, `address`, `comment`, `payment`, `callback`) VALUES
+(1, 1, ' street : Lenina, home : 92', '', 'on', 'on'),
+(2, 19, ' street : Metallyrgov, home : 54', 'test', NULL, 'on'),
+(3, 1, ' street : Metallyrgov, home : 92', '', NULL, NULL),
+(4, 1, ' street : Lenina, home : 92', '', NULL, NULL),
+(5, 1, ' street : Lenina, home : 92', '', NULL, NULL),
+(6, 19, ' street : Metallyrgov, home : 23', '', NULL, NULL),
+(7, 1, ' street : Mira, home : 5, part : 5, appt : 63', '', 'on', 'on'),
+(8, 20, ' street : Lenina, home : 44', '', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -61,7 +58,7 @@ INSERT INTO `orders` (`order_id`, `buyer`, `delivery_address`, `comment`, `payme
 --
 
 CREATE TABLE `users` (
-  `user_id` int(11) NOT NULL,
+  `idUser` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL
@@ -71,10 +68,10 @@ CREATE TABLE `users` (
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`user_id`, `email`, `name`, `phone`) VALUES
+INSERT INTO `users` (`idUser`, `email`, `name`, `phone`) VALUES
 (1, 'svetlana_d87@mail.ru', 'Svetlana', '+7 (000) 000 00 00'),
-(13, 'dima@mail.ru', 'Dima', '+7 (000) 000 00 00'),
-(14, 'vera@mail.ru', 'Vera', '+7 (000) 000 00 00');
+(19, 'svetlanaderiglazova87@gmail.com', 'Svetlana', '+7 (000) 000 00 00'),
+(20, 'vera@mail.ru', 'Svetlana', '+7 (000) 000 00 00');
 
 --
 -- Индексы сохранённых таблиц
@@ -84,13 +81,13 @@ INSERT INTO `users` (`user_id`, `email`, `name`, `phone`) VALUES
 -- Индексы таблицы `orders`
 --
 ALTER TABLE `orders`
-  ADD PRIMARY KEY (`order_id`);
+  ADD PRIMARY KEY (`idOrder`);
 
 --
 -- Индексы таблицы `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`idUser`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
@@ -100,13 +97,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `idOrder` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
