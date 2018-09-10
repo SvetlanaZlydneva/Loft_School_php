@@ -1,0 +1,5 @@
+{
+    "require": {
+        "roots/multisite-url-fixer": "^1.1"
+    }
+}
