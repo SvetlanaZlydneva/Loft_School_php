@@ -8,15 +8,13 @@
         <?php endwhile; else:?>
         <p><?php _e(" Ничего  не найдено") ?></p>
         <?php endif; ?>
-
-
         <div class="page-navigation">
-            <div class="page-navigation-wrap"><a href="<?php previous_posts_link();?>" class="page-navigation__prev-page"><i
-                            class="icon icon-angle-double-left"></i>Предыдущая статья</a></div>
-            <div class="page-navigation-wrap"><a href="<?php next_posts_link(); ?>" class="page-navigation__next-page">Сдедующая статья<i
-                            class="icon icon-angle-double-right"></i></a></div>
+            <div class="page-navigation-wrap">
+                <?php previous_post_link('%link', '<< Предыдущая запись');?>
+            </div>
+            <div class="page-navigation-wrap">
+                <?php next_post_link('%link', 'Следующая запись >>');?>
+            </div>
         </div>
     </div>
-
-
 <?php get_footer(); ?>
