@@ -1,18 +1,5 @@
 <?php get_header();?>
-    <div class="sidebar">
-        <div class="sidebar__sidebar-item">
-            <div class=""><?php get_calendar();?></div><br>
-            <div class=""><?php wp_list_categories();?></div><br>
-            <div class="sidebar-item__title">Теги</div>
-            <div class="sidebar-item__content">
-                <ul class="tags-list">
-                    <?php echo wp_tag_cloud();?>
-                </ul>
-            </div>
-
-        </div>
-    </div>
-
+<?php get_sidebar('right'); ?>
     <div class="content">
         <?php
         $posts =query_posts([
