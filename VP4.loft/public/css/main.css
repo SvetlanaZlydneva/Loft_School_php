@@ -1120,3 +1120,35 @@ a img.aligncenter {
   width: 130%;
   background-color: #d0e26c;
   z-index: -5; }
+.boxCategory{
+  width: 30%;
+  float: left;
+  background:rgba(255,255,255,0.5);
+}
+.boxCategory legend,.boxProduct legend{
+  font-size: 25px;
+  text-transform: uppercase;
+}
+
+.boxProduct{
+  width: 70%;
+  float: right;
+  background:rgba(255,255,255,0.5);
+}
+.newbox{
+  width: 80%;
+  margin: 50px auto;
+}
+.productImg{
+  width: 100px;
+  height: auto;
+}
+.boxProduct table{
+  margin: 50px;
+  padding: 20px;
+  border-collapse: collapse;
+}
+.boxProduct th {
+  padding: 5px; /* Поля вокруг содержимого ячеек */
+  border: 1px dotted #000; /* Граница вокруг ячеек */
+}

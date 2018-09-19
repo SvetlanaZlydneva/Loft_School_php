@@ -10,7 +10,6 @@ class MainController extends Controller
 {
     public function index()
     {
-        return view('main',['categories' =>Category::all(),'products'=>Product::all()]);
+        return view('main', ['title' => 'Главная', 'categories' => Category::all(), 'products' => Product::all()]);
     }
-
 }

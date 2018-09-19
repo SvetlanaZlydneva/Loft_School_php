@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
+
 use Illuminate\Http\Request;
 
-class AboutProductController extends Controller
+class AboutController extends Controller
 {
     public function index()
     {
